@@ -1,1 +1,3 @@
-export interface Experiment {}
+export interface Experiment {
+    abbreviation: string
+}

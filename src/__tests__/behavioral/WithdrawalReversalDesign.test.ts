@@ -14,4 +14,9 @@ export default class WithdrawalReversalDesignTest extends AbstractSpruceTest {
     protected static async canCreateWithdrawalReversalDesign() {
         assert.isTruthy(this.design)
     }
+
+    @test()
+    protected static async hasPublicAbbreviationAttribute() {
+        assert.isEqual(this.design.abbreviation, 'WRD')
+    }
 }
