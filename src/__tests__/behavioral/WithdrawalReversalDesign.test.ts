@@ -3,15 +3,16 @@ import AbstractSpruceTest, {
     assert,
     generateId,
 } from '@sprucelabs/test-utils'
-import WithdrawalReversalDesign from '../../WithdrawalReversalDesign'
+import { WRD } from '../../types'
+import WithdrawalReversalDesignImpl from '../../WithdrawalReversalDesign'
 
 export default class WithdrawalReversalDesignTest extends AbstractSpruceTest {
-    private static design: WithdrawalReversalDesign
+    private static design: WRD
 
     protected static async beforeEach() {
         await super.beforeEach()
 
-        this.design = new WithdrawalReversalDesign()
+        this.design = this.WithdrawalReversalDesign()
     }
 
     @test()
@@ -35,5 +36,9 @@ export default class WithdrawalReversalDesignTest extends AbstractSpruceTest {
 
     private static get phases() {
         return this.design.phases
+    }
+
+    private static WithdrawalReversalDesign() {
+        return WithdrawalReversalDesignImpl.Create()
     }
 }
