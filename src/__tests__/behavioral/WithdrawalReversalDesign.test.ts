@@ -1,4 +1,8 @@
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test-utils'
+import AbstractSpruceTest, {
+    test,
+    assert,
+    generateId,
+} from '@sprucelabs/test-utils'
 import WithdrawalReversalDesign from '../../WithdrawalReversalDesign'
 
 export default class WithdrawalReversalDesignTest extends AbstractSpruceTest {
@@ -22,10 +26,11 @@ export default class WithdrawalReversalDesignTest extends AbstractSpruceTest {
 
     @test()
     protected static async canAddPhaseToDesign() {
-        this.design.addPhase('Baseline')
+        const name = generateId()
+        this.design.addPhase(name)
 
         assert.isEqual(this.phases.length, 1)
-        assert.isEqual(this.phases[0], 'Baseline')
+        assert.isEqual(this.phases[0], name)
     }
 
     private static get phases() {
